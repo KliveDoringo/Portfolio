@@ -1,1 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klive Doringo | IT Infrastructure & Systems Portfolio</title>
+    <style>
+        /* FOUNDATIONAL CONFIGURATIONS */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+            background-color: #030712; /* Terminal Black */
+            color: #f3f4f6;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+        body {
+            line-height: 1.5;
+            padding-bottom: 100px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* STICKY TOP HEADER NAVIGATION */
+        nav {
+            background-color: rgba(3, 7, 18, 0.9);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            height: 64px;
+            border-bottom: 1px solid #1f2937;
+        }
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+        .nav-logo {
+            font-weight: bold;
+            color: #10b981; /* Emerald Core */
+            letter-spacing: 1px;
+        }
+        .nav-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 13px;
+            margin-left: 24px;
+            transition: color 0.15s ease;
+        }
+        .nav-links a:hover {
+            color: #10b981;
+        }
+
+        /* LEAD PROFILE CARD SECTION */
+        header {
+            padding: 64px 0;
+            border-bottom: 1px solid #1f2937;
+        }
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 6px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            background-color: rgba(16, 185, 129, 0.03);
+            color: #10b981;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+        .status-pulse {
+            width: 8px;
+            height: 8px;
+            background-color: #10b981;
+            border-radius: 50%;
+        }
+        h1 {
+            font-size: 36px;
+            font-weight: 800;
+            color: #ffffff;
+        }
+        .role-title {
+            font-size: 18px;
+            color: #9ca3af;
+            margin-top: 4px;
+        }
+        .profile-summary {
+            color: #9ca3af;
+            margin-top: 20px;
+            max-width: 750px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .bold-metric {
+            color: #ffffff;
+            font-weight: bold;
+            border-bottom: 1px dashed #4b5563;
+        }
+
+        /* COMPETENCY MATRIX CORE WHEEL */
+        section {
+            padding: 56px 0;
+            border-bottom: 1px solid #1f2937;
+        }
+        .section-headline {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .matrix-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        @media (min-width: 768px) {
+            .matrix-layout { grid-template-columns: 1fr 1fr; }
+        }
+        .matrix-block {
+            background-color: #0b0f19;
+            border: 1px solid #1f2937;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .matrix-block h3 {
+            font-size: 15px;
+            color: #10b981;
+            margin-bottom: 14px;
+            font-weight: bold;
+        }
+        .matrix-ul {
+            list-style: none;
+        }
+        .matrix-li {
+            font-size: 13px;
+            color: #9ca3af;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .matrix-li::before {
+            content: "▪";
+            color: #4b5563;
+        }
+
+        /* LAB ARCHITECT INTELLIGENT TOGGLE WIDGET */
+        .lab-interactive-frame {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-top: 20px;
+        }
+        @media (min-width: 768px) {
+            .lab-interactive-frame { grid-template-columns: 1fr 2fr; }
+        }
+        .step-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .step-tab {
+            background-color: #0b0f19;
+            border: 1px solid #1f2937;
+            padding: 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: left;
+            color: #9ca3af;
+            font-size: 13px;
+            transition: all 0.15s ease;
+        }
+        .step-tab:hover {
+            border-color: #4b5563;
+            color: #ffffff;
+        }
+        .step-tab.active {
+            border-color: #10b981;
+            background-color: rgba(16, 185, 129, 0.02);
+            color: #10b981;
+            font-weight: bold;
+        }
+        .display-monitor {
+            background-color: #000000;
+            border: 1px solid #1f2937;
+            border-radius: 8px;
+            min-height: 260px;
+            display: flex;
+            flex-direction: column;
+        }
+        .monitor-topbar {
+            background-color: #0b0f19;
+            padding: 8px 16px;
+            border-bottom: 1px solid #1f2937;
+            font-size: 11px;
+            color: #4b5563;
+            display: flex;
+            justify-content: space-between;
+        }
+        .monitor-screen {
+            padding: 20px;
+            font-size: 13px;
+            color: #d1d5db;
+            flex-grow: 1;
+        }
+        .config-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+            font-size: 12px;
+        }
+        .config-table th, .config-table td {
+            border: 1px solid #1f2937;
+            padding: 6px 10px;
+            text-align: left;
+        }
+        .config-table th {
+            background-color: #0b0f19;
+            color: #9ca3af;
+        }
+        .console-tag {
+            color: #10b981;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP HEADER NAVIGATION BAR -->
+    <nav>
+        <div class="container nav-container">
+            <div class="nav-logo">SYSADMIN // PORTFOLIO</div>
+            <div class="nav-links">
+                <a href="#summary">Overview</a>
+                <a href="#matrix">Core Skills</a>
+                <a href="#homelab">Dell Lab Deployment</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- LEAD OVERVIEW PROFILE -->
+    <header id="summary">
+        <div class="container">
+            <div class="status-badge">
+                <div class="status-pulse"></div> Active Infrastructure Tracking Live
+            </div>
+            <h1>Klive Doringo</h1>
+            <div class="role-title">IT Operations & Systems Infrastructure Specialist</div>
+            <p class="profile-summary">
+                Systems Engineer combining a structural <span class="bold-metric">Bachelor of Computer Science</span> foundational background with <span class="bold-metric">2+ years of enterprise production environment</span> experience. Proven capabilities managing ticket workflows up to Tier 2 escalation levels, administering user domains, hardening corporate endpoints, and designing private high-availability sandboxes.
+            </p>
+        </div>
+    </header>
+
+    <!-- CORE TECHNICAL MATRIX COMPETENCY -->
+    <section id="matrix">
+        <div class="container">
+            <h2 class="section-headline">📂 Verified Technical Domain Competencies</h2>
+            <div class="matrix-layout">
+                
+                <!-- Category 1 -->
+                <div class="matrix-block">
+                    <h3>Enterprise Service Desk Operations</h3>
+                    <ul class="matrix-ul">
+                        <li class="matrix-li">SLA Compliance: Triaging and lifecycle tracking for technical support requests using Jira workflows.</li>
+                        <li class="matrix-li">Endpoint Hardware: Assembly, diagnostics, component mapping, and replacement of company physical computing fleets.</li>
+                        <li class="matrix-li">OS Migration: Executed enterprise-wide operating system transitions for local corporate nodes.</li>
+                    </ul>
+                </div>
+
+                <!-- Category 2 -->
+                <div class="matrix-block">
+                    <h3>Network & Server Infrastructure</h3>
+                    <ul class="matrix-ul">
+                        <li class="matrix-li">Directory Operations: Managing user profiles, permission states, and account scopes via centralized directory architecture.</li>
+                        <li class="matrix-li">Network Configuration: Provisioning switches, core routers, local subnets, DHCP leasing, and DNS bindings.</li>
+                        <li class="matrix-li">Server Administration: Remote monitoring, tracking resource health, backup routines, and storage allocation rules.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- DYNAMIC INTERACTIVE LAB WORKSPACE PLAN -->
+    <section id="homelab">
+        <div class="container">
+            <h2 class="section-headline">🎛️ Mini ATX Homelab Architecture</h2>
+            <p style="color: #9ca3af; font-size: 13px; margin-top: -16px; margin-bottom: 24px;">Select an architectural layer step block to review configuration schemas, storage scopes, and parameter bindings.</p>
 
